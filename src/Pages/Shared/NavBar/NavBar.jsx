@@ -25,7 +25,7 @@ const NavBar = () => {
                     <a>Submenu 1</a>
                   </li>
                   <li>
-                    <a>Submenu 2</a>
+                    <a>Submenu 234</a>
                   </li>
                 </ul>
               </li>

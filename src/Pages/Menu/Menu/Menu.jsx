@@ -40,13 +40,13 @@ const Menu = () => {
       
           {/* dessert menu items */}
 
-        <MenuCategory items={desserts} title="Dessert" img="https://i.ibb.co/hmv2bkK/dessert-bg.jpg"></MenuCategory>
+        <MenuCategory items={desserts} title="dessert" img="https://i.ibb.co/hmv2bkK/dessert-bg.jpg"></MenuCategory>
 
-        <MenuCategory items={pizza} title="Pizza" img="https://i.ibb.co/dr0cbJf/pizza-bg.jpg"></MenuCategory>
+        <MenuCategory items={pizza} title="pizza" img="https://i.ibb.co/dr0cbJf/pizza-bg.jpg"></MenuCategory>
 
-        <MenuCategory items={salad} title="Salad" img="https://i.ibb.co/sJpPnJ5/salad-bg.jpg"></MenuCategory>
+        <MenuCategory items={salad} title="salad" img="https://i.ibb.co/sJpPnJ5/salad-bg.jpg"></MenuCategory>
 
-        <MenuCategory items={soup} title="Soup" img="https://i.ibb.co/fFnXnXt/soup-bg.jpg"></MenuCategory>
+        <MenuCategory items={soup} title="soup" img="https://i.ibb.co/fFnXnXt/soup-bg.jpg"></MenuCategory>
 
       
 

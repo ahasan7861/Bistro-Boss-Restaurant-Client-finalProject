@@ -1,17 +1,34 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProviders";
 
 const NavBar = () => {
 
+  const {user, logOut} = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+    .then(() => {
+
+    })
+    .catch(error => console.log(error));
+  }
+
     const navOptions = <>
-            <li>
-                <Link to="/">Home</Link>
-                <Link to="/menu">Our Menu</Link>
-                <Link to="/order/salad">Order Food</Link>
-                <Link to="/login">Login</Link>
+            
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/menu">Our Menu</Link></li>
+            <li><Link to="/order/salad">Order Food</Link></li>
+            <li><Link to="/menu">Our Menu</Link></li>
+            <li><Link to="/secrate">Secrate</Link></li>
+            {/* <li><Link to="/login">Login</Link></li> */}
                 
-              </li>
+              {
+                user? <><button onClick={handleLogOut} className="btn btn-active btn-ghost">Logout</button></> : <><li><Link to="/login">Login</Link></li></>
+              }
+
+
     </>
 
 
@@ -77,7 +94,9 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Get started</a>
+         <p>{
+          user && <span className="text-xl mr-3 "> <span className="mr-1 font-bold">Welcome </span>{user.email}</span>
+          }</p>
         </div>
       </div>
     </>

@@ -95,7 +95,7 @@ const NavBar = () => {
         </div>
         <div className="navbar-end">
          <p>{
-          user && <span className="text-xl mr-3 "> <span className="mr-1 font-bold">Welcome </span>{user.email}</span>
+          user && <span className="text-xl mr-3 "> <span className="mr-1 font-bold">Welcome </span>{user.displayName}</span>
           }</p>
         </div>
       </div>

@@ -1,37 +1,60 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import {  FaShoppingCart } from 'react-icons/fa';
 import { AuthContext } from "../../../Providers/AuthProviders";
 
 const NavBar = () => {
-
-  const {user, logOut} = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
-    .then(() => {
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
 
-    })
-    .catch(error => console.log(error));
-  }
+  const navOptions = (
+    <>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/menu">Our Menu</Link>
+      </li>
+      <li>
+        <Link to="/order/salad">Order Food</Link>
+      </li>
+      <li>
+        <Link to="/secrate">Secrate</Link>
+      </li>
+      <li>
+        <Link to="/">
+          <button className="btn btn-active btn-ghost gap-2">
+          
+          <FaShoppingCart></FaShoppingCart>
+            <div className="badge badge-secondary">+0</div>
+          </button>
+        </Link>
+      </li>
 
-    const navOptions = <>
-            
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/menu">Our Menu</Link></li>
-            <li><Link to="/order/salad">Order Food</Link></li>
-            
-            <li><Link to="/secrate">Secrate</Link></li>
-            {/* <li><Link to="/login">Login</Link></li> */}
-                
-              {
-                user? <><button onClick={handleLogOut} className="btn btn-active btn-ghost">Logout</button></> : <><li><Link to="/login">Login</Link></li></>
-              }
+      
+      {/* <li><Link to="/login">Login</Link></li> */}
 
-
+      {user ? (
+        <>
+          <button onClick={handleLogOut} className="btn btn-active btn-ghost">
+            Logout
+          </button>
+        </>
+      ) : (
+        <>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </>
+      )}
     </>
-
-
+  );
 
   return (
     <>
@@ -58,45 +81,31 @@ const NavBar = () => {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black"
             >
-
-
-
-
-
-              
-
-    {navOptions}
-
-
-
-
-
+              {navOptions}
             </ul>
           </div>
 
-            <div>
-            <a className="btn btn-ghost normal-case text-2xl">BISTRO BOSS</a> <br />
-          <p className="text-base ml-4">RESTAURANT</p>
-            </div>
-          
-
-
+          <div>
+            <a className="btn btn-ghost normal-case text-2xl">BISTRO BOSS</a>{" "}
+            <br />
+            <p className="text-base ml-4">RESTAURANT</p>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-
-
-
-            {navOptions}
-
-
-
-          </ul>
+          <ul className="menu menu-horizontal px-1">{navOptions}</ul>
         </div>
         <div className="navbar-end">
-         <p>{
-          user && <span className="text-xl mr-3 "> <span className="mr-1 font-bold">Welcome <br /></span>{user.displayName}</span>
-          }</p>
+          <p>
+            {user && (
+              <span className="text-xl mr-3 ">
+                {" "}
+                <span className="mr-1 font-bold">
+                  Welcome <br />
+                </span>
+                {user.displayName}
+              </span>
+            )}
+          </p>
         </div>
       </div>
     </>

@@ -2,10 +2,10 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import Swal from "sweetalert2";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const FoodCard = ({ item }) => {
-  const { name, recipe, image, price } = item;
+  const { name, recipe, image, price, _id } = item;
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -31,13 +31,14 @@ const FoodCard = ({ item }) => {
       return
     }
     console.log(item);
-    if (user) {
+    if (user && user.email) {
+      const cartItem = {menuItemId: _id, name, image, price, email: user.email}
       fetch("http://localhost:5000/carts", {
         method: "POST",
         headers: {
           'content-type': 'application/json'
       },
-      body: JSON.stringify(item)
+      body: JSON.stringify(cartItem)
       })
 
 
@@ -47,7 +48,7 @@ const FoodCard = ({ item }) => {
             Swal.fire({
               icon: "success",
               title: "Success!",
-              text: "Add to cart Successful.",
+              text: "Food added on the cart.",
             });
           } 
         });

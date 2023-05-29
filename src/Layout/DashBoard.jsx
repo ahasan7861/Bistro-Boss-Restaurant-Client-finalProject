@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { FaCalendarAlt, FaHome, FaShoppingCart, FaWallet } from 'react-icons/fa';
 
 const DashBoard = () => {
@@ -18,29 +18,31 @@ const DashBoard = () => {
           Open drawer
         </label>
       </div>
-      <div className="drawer-side">
+      <div className="drawer-side bg-[#D1A054]">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+        <ul className="menu p-4 w-80  text-base-content">
 
         <li>
-            <Link><FaHome></FaHome> User Home</Link>
+            <NavLink to="/dashboard/home"><FaHome></FaHome> User Home</NavLink>
           </li>
 
           <li>
-            <Link><FaCalendarAlt></FaCalendarAlt> Reservation</Link>
+            <NavLink to="/dashboard/reservations"><FaCalendarAlt></FaCalendarAlt> Reservation</NavLink>
           </li>
 
         <li>
-            <Link><FaWallet></FaWallet> Payment History</Link>
+            <NavLink to="/dashboard/history"><FaWallet></FaWallet> Payment History</NavLink>
           </li>
 
           <li>
-            <Link><FaShoppingCart></FaShoppingCart> My Cart </Link>
+            <NavLink to="/dashboard/mycart"><FaShoppingCart></FaShoppingCart> My Cart </NavLink>
           </li>
           <div className="divider"></div>
 
           <li>
-            <Link to="/"><FaHome></FaHome> Home</Link>
+            <NavLink to="/"><FaHome></FaHome> Home</NavLink>
+            <NavLink to="/menu"><FaHome></FaHome> Our Menu</NavLink>
+            <NavLink to="/order/salad"><FaHome></FaHome> Order Food</NavLink>
           </li>
         </ul>
       </div>
